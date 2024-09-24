@@ -14,13 +14,15 @@ import {
   httpStatusCode
 } from '@/data/protocols/http-client/http-response'
 import { InvalidCredentialsError } from '@/domain/errors/invalid-credentials-error'
+import { UnexpectedError } from '@/domain/errors/unexpected-error'
 
 interface SutTypes {
   sut: Authentication
   httpClientStub: IHttpPostClient
 }
 
-const makeSut = (url: string): SutTypes => {
+const makeSut = (): SutTypes => {
+  const url = 'any_url'
   const httpClientStub = makeHttpClientStub()
   const sut = new RemoteAuthentication(url, httpClientStub)
   return {
@@ -49,7 +51,7 @@ const makeFakeRequest = (): AuthenticationParams => ({
 
 describe('RemoteAuthentication', () => {
   it('Should call httpClient with correct values', async () => {
-    const { sut, httpClientStub } = makeSut('any_url')
+    const { sut, httpClientStub } = makeSut()
     const postSpy = jest.spyOn(httpClientStub, 'post')
     const expectedRequest = makeFakeRequest()
     await sut.auth(expectedRequest)
@@ -59,7 +61,7 @@ describe('RemoteAuthentication', () => {
     })
   })
   it('Should throw InvalidCredentialsError if httpClientStub returns statusCode 401', async () => {
-    const { sut, httpClientStub } = makeSut('any_url')
+    const { sut, httpClientStub } = makeSut()
     jest.spyOn(httpClientStub, 'post').mockReturnValueOnce(
       Promise.resolve({
         statusCode: httpStatusCode.unauthorized
@@ -69,8 +71,16 @@ describe('RemoteAuthentication', () => {
     await expect(response).rejects.toThrow(new InvalidCredentialsError())
   })
   it('Should return correct value if httpClientStub succeed', async () => {
-    const { sut } = makeSut('any_url')
+    const { sut } = makeSut()
     const response = await sut.auth(makeFakeRequest())
     expect(response).toBe('any_token')
+  })
+  it('Should return UnexpectedError if httpClientStub returns any error', async () => {
+    const { sut, httpClientStub } = makeSut()
+    jest.spyOn(httpClientStub, 'post').mockReturnValueOnce(Promise.resolve({
+      statusCode: httpStatusCode.forbidden
+    }))
+    const promise = sut.auth(makeFakeRequest())
+    await expect(promise).rejects.toThrow(new UnexpectedError())
   })
 })
