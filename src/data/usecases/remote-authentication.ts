@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/return-await */
 import { IHttpPostClient } from '@/data/protocols/http-client/http-post-client'
 import { InvalidCredentialsError } from '@/domain/errors/invalid-credentials-error'
+import { UnexpectedError } from '@/domain/errors/unexpected-error'
 import { AccountModel } from '@/domain/models/account'
 import {
   Authentication,
@@ -24,12 +25,7 @@ export class RemoteAuthentication implements Authentication {
       case 401:
         throw new InvalidCredentialsError()
       default:
-        break
+        throw new UnexpectedError()
     }
-    return new Promise((resolve) =>
-      resolve({
-        token: 'any_token'
-      })
-    )
   }
 }
