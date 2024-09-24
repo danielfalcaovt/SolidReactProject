@@ -34,7 +34,7 @@ const makeHttpClientStub = (): IHttpPostClient => {
       return new Promise((resolve) =>
         resolve({
           statusCode: httpStatusCode.ok,
-          body: {}
+          body: 'any_token'
         })
       )
     }
@@ -67,5 +67,10 @@ describe('RemoteAuthentication', () => {
     )
     const response = sut.auth(makeFakeRequest())
     await expect(response).rejects.toThrow(new InvalidCredentialsError())
+  })
+  it('Should return correct value if httpClientStub succeed', async () => {
+    const { sut } = makeSut('any_url')
+    const response = await sut.auth(makeFakeRequest())
+    expect(response).toBe('any_token')
   })
 })
