@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/return-await */
-import { IHttpPostClient } from 'data/protocols/http-client/http-post-client'
-import { AccountModel } from 'domain/models/account'
+import { IHttpPostClient } from '@/data/protocols/http-client/http-post-client'
+import { AccountModel } from '@/domain/models/account'
 import {
   Authentication,
   AuthenticationParams

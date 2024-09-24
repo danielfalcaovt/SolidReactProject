@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/return-await */
-import { IHttpPostClient, IHttpPostClientParams } from 'data/protocols/http-client/http-post-client'
-import { Authentication, AuthenticationParams } from 'domain/usecases/authentication'
+import { IHttpPostClient, IHttpPostClientParams } from '@/data/protocols/http-client/http-post-client'
+import { Authentication, AuthenticationParams } from '@/domain/usecases/authentication'
 import * as faker from 'faker'
 import { RemoteAuthentication } from './remote-authentication'
 
