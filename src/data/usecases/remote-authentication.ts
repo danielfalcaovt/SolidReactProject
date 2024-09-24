@@ -19,6 +19,8 @@ export class RemoteAuthentication implements Authentication {
       body: params
     })
     switch (response.statusCode) {
+      case 200:
+        return response.body
       case 401:
         throw new InvalidCredentialsError()
       default:
