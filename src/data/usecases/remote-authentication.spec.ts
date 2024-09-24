@@ -15,10 +15,12 @@ import {
 } from '@/data/protocols/http-client/http-response'
 import { InvalidCredentialsError } from '@/domain/errors/invalid-credentials-error'
 import { UnexpectedError } from '@/domain/errors/unexpected-error'
+import { AccountModel } from '@/domain/models/account'
+import { AddAccount } from '../protocols/account/add-account'
 
 interface SutTypes {
   sut: Authentication
-  httpClientStub: IHttpPostClient
+  httpClientStub: IHttpPostClient<any, any>
 }
 
 const makeSut = (): SutTypes => {
@@ -30,13 +32,13 @@ const makeSut = (): SutTypes => {
     httpClientStub
   }
 }
-const makeHttpClientStub = (): IHttpPostClient => {
-  class HttpClientStub implements IHttpPostClient {
-    async post (httpClientParams: IHttpPostClientParams): Promise<httpResponse> {
+const makeHttpClientStub = (): IHttpPostClient<AddAccount, AccountModel> => {
+  class HttpClientStub implements IHttpPostClient<AddAccount, AccountModel> {
+    async post (httpClientParams: IHttpPostClientParams<AddAccount>): Promise<httpResponse<AccountModel>> {
       return new Promise((resolve) =>
         resolve({
           statusCode: httpStatusCode.ok,
-          body: 'any_token'
+          body: { token: 'any_token' }
         })
       )
     }

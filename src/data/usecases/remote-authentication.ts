@@ -7,11 +7,12 @@ import {
   Authentication,
   AuthenticationParams
 } from '@/domain/usecases/authentication'
+import { AddAccount } from '../protocols/account/add-account'
 
 export class RemoteAuthentication implements Authentication {
   constructor (
     private readonly url: string,
-    private readonly httpClient: IHttpPostClient
+    private readonly httpClient: IHttpPostClient<AddAccount, AccountModel>
   ) {}
 
   async auth (params: AuthenticationParams): Promise<AccountModel> {
@@ -21,8 +22,10 @@ export class RemoteAuthentication implements Authentication {
     })
     switch (response.statusCode) {
       case 200:
-        return {
-          token: response.body
+        if (response.body) {
+          return response.body
+        } else {
+          throw new UnexpectedError()
         }
       case 401:
         throw new InvalidCredentialsError()

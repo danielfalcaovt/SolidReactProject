@@ -4,7 +4,7 @@ export enum httpStatusCode {
   ok = 200
 }
 
-export interface httpResponse {
+export interface httpResponse<T> {
   statusCode: httpStatusCode
-  body?: any
+  body?: T
 }
