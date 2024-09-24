@@ -73,7 +73,7 @@ describe('RemoteAuthentication', () => {
   it('Should return correct value if httpClientStub succeed', async () => {
     const { sut } = makeSut()
     const response = await sut.auth(makeFakeRequest())
-    expect(response).toBe('any_token')
+    expect(response).toEqual({ token: 'any_token' })
   })
   it('Should return UnexpectedError if httpClientStub returns any error', async () => {
     const { sut, httpClientStub } = makeSut()
