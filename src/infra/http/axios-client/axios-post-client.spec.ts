@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-throw-literal */
 import { IHttpPostClientParams } from '@/data/protocols/http-client/http-post-client'
 import faker from 'faker'
 import axios from 'axios'
@@ -34,5 +35,21 @@ describe('AxiosPostClient', () => {
     const expectedValue = makeFakeRequest()
     await sut.post(expectedValue)
     expect(postSpy).toHaveBeenCalledWith(expectedValue.url, expectedValue.body)
+  })
+  it('Should return httpResponse if axios throws an error', async () => {
+    const { sut, mockedAxios } = makeSut()
+    jest.spyOn(mockedAxios, 'post').mockImplementationOnce(() => {
+      throw {
+        response: {
+          status: 400,
+          data: []
+        }
+      }
+    })
+    const response = await sut.post(makeFakeRequest())
+    expect(response).toEqual({
+      statusCode: 400,
+      body: []
+    })
   })
 })
