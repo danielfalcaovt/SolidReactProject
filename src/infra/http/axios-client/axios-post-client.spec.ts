@@ -52,4 +52,9 @@ describe('AxiosPostClient', () => {
       body: []
     })
   })
+  it('Should return httpResponse on axios succeed', async () => {
+    const { sut, mockedAxios } = makeSut()
+    const response = sut.post(makeFakeRequest())
+    expect(response).toEqual(mockedAxios.post.mock.results[0].value) // captura o valor resolvido [0] da promise
+  })
 })
