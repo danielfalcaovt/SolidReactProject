@@ -11,11 +11,11 @@ export class AxiosHttpClient implements IHttpPostClient<any, any> {
     httpClientParams: IHttpPostClientParams<any>
   ): Promise<httpResponse<any>> {
     try {
-      await axios.post(httpClientParams.url, httpClientParams.body)
+      const response = await axios.post(httpClientParams.url, httpClientParams.body)
       return new Promise((resolve) =>
         resolve({
-          statusCode: 200,
-          body: []
+          statusCode: response.status,
+          body: response.data
         })
       )
     } catch (err: any) {
