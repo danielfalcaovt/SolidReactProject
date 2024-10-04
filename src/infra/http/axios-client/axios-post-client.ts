@@ -26,8 +26,7 @@ export class AxiosHttpClient implements IHttpPostClient<any, any> {
         }))
       } else {
         return new Promise(resolve => resolve({
-          statusCode: 500,
-          body: 'Erro Inesperado. Tente novamente mais tarde.'
+          statusCode: 500
         }))
       }
     }
