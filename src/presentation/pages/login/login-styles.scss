@@ -1,0 +1,113 @@
+$primaryLight: #BC477B;
+$primary: #880E4F;
+$primaryDark: #560027;
+$black: #000;
+$white: #FFF;
+$background: #FFF;
+
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background;
+}
+
+input[type="password"], 
+input[type="email"] {
+  border: 1px solid $black;
+  border-radius: 4px;
+  line-height: 35px;
+  padding-right: 40px;
+  &:focus {
+    outline-color: $primaryLight;
+  }
+}
+
+button {
+  color: $white;
+  background: $primary;
+  border-radius: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 250px;
+  line-height: 30px;
+  &:focus {
+    opacity: 0.9;
+  }
+}
+
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  .link {
+    background: $white;
+  }
+  .errorWrap {
+    background: $white;
+  }
+  .error {
+    background: $white;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    margin: auto;
+    height: 30vh;
+    background: $white;
+    border-radius: 8px;
+    box-shadow: 0px 1px 3px -1px $black;
+
+    .inputWrap {
+      width: 300px;
+      display: flex;
+      position: relative;
+      span {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      input {
+        flex-grow: 1
+      }
+    }
+  }
+  
+  .header {
+    background: $primary;
+    display: flex;
+    border-top: 40px solid $primaryDark;
+    flex-direction: column;
+    align-items: center;
+    img {
+      margin-top: 40px;
+      width: 64px;
+    }
+    h1 {
+      color: $white;
+      font-size: 16px;
+      margin: 16px 0px 40px;
+      font-weight: 300;
+    }
+  }
+  .footer {
+    background: $primary;
+    height: 40px;
+  }
+
+  h1 {
+    color: $white;
+  }
+}
