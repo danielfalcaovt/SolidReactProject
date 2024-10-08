@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import * as styles from './footer-styles.scss'
 
-export default function Footer (): JSX.Element {
+function Footer (): JSX.Element {
   return (
     <footer className={styles.footer} />
   )
 }
+
+export default memo(Footer)
