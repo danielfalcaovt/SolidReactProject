@@ -1,0 +1,16 @@
+@import '../../styles/colors/colors.scss';
+
+.inputWrap {
+  width: 300px;
+  display: flex;
+  position: relative;
+  span {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  input {
+    flex-grow: 1
+  }
+}

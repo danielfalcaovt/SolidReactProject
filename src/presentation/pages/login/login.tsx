@@ -5,6 +5,7 @@ import Header from '@/presentation/components/login-header/header'
 import Footer from '@/presentation/components/login-footer/footer'
 import LoadingPage from '../loading/loading'
 import Spinner from '../../components/spinner/spinner'
+import Input from '@/presentation/components/input/input'
 
 export default function Login (): JSX.Element {
   const [loading, setLoading] = useState(true)
@@ -19,11 +20,11 @@ export default function Login (): JSX.Element {
       <form className={styles.form}>
         <h2>Login</h2>
         <div className={styles.inputWrap}>
-          <input type="email" name="email" placeholder="Insira seu email" />
+          <Input type="email" name="email" placeholder="Insira seu email" />
           <span>🤬</span>
         </div>
         <div className={styles.inputWrap}>
-          <input
+          <Input
             type="password"
             name="password"
             placeholder="Insira sua senha"
