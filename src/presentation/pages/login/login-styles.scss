@@ -1,9 +1,4 @@
-$primaryLight: #BC477B;
-$primary: #880E4F;
-$primaryDark: #560027;
-$black: #000;
-$white: #FFF;
-$background: #FFF;
+@import '../../styles/colors/colors.scss';
 
 * {
   padding: 0px;
@@ -84,27 +79,9 @@ button {
       }
     }
   }
-  
-  .header {
-    background: $primary;
-    display: flex;
-    border-top: 40px solid $primaryDark;
-    flex-direction: column;
-    align-items: center;
-    img {
-      margin-top: 40px;
-      width: 64px;
-    }
-    h1 {
-      color: $white;
-      font-size: 16px;
-      margin: 16px 0px 40px;
-      font-weight: 300;
-    }
-  }
-  .footer {
-    background: $primary;
-    height: 40px;
+
+  .spinner {
+    display: none;
   }
 
   h1 {
