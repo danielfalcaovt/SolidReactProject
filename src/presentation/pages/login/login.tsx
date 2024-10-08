@@ -12,25 +12,15 @@ export default function Login (): JSX.Element {
   useEffect(() => {
     setLoading(false)
   }, [])
-  return (
-    loading
-      ? <LoadingPage/>
-      : <div className={styles.login}>
-      <Header/>
+  return loading
+    ? <LoadingPage />
+    : (
+    <div className={styles.login}>
+      <Header />
       <form className={styles.form}>
         <h2>Login</h2>
-        <div className={styles.inputWrap}>
-          <Input type="email" name="email" placeholder="Insira seu email" />
-          <span>🤬</span>
-        </div>
-        <div className={styles.inputWrap}>
-          <Input
-            type="password"
-            name="password"
-            placeholder="Insira sua senha"
-          />
-          <span>🤬</span>
-        </div>
+        <Input type="email" name="email" placeholder="Insira seu email" />
+        <Input type="password" name="password" placeholder="Insira sua senha" />
         <button type="submit">Enviar</button>
         <span className={styles.link}>Criar Conta</span>
         <div className={styles.error}>
