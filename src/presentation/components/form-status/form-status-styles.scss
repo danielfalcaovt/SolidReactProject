@@ -1,0 +1,17 @@
+@import '../../styles/colors/colors.scss';
+
+.spinner {
+  display: flex;
+}
+.errorWrap {
+  background: $white;
+  display: none;
+}
+.error {
+  display: flex;
+  margin-top: 16px;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  background: $white;
+}
