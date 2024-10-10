@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import * as styles from './login-styles.scss'
-import Header from '@/presentation/components/login-header/header'
-import Footer from '@/presentation/components/login-footer/footer'
+import { Footer, Header, Input, Spinner } from '../../components'
 import LoadingPage from '../loading/loading'
-import Spinner from '../../components/spinner/spinner'
-import Input from '@/presentation/components/input/input'
 
 export default function Login (): JSX.Element {
   const [loading, setLoading] = useState(true)

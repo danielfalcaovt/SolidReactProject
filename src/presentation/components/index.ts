@@ -1,0 +1,6 @@
+export { default as Footer } from './login-footer/footer'
+export { default as Header } from './login-header/header'
+export { default as Logo } from './logo/logo'
+export { default as Spinner } from './spinner/spinner'
+export { default as Input } from './input/input'
+export { default as Loader } from './loader/loader'
