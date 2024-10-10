@@ -34,7 +34,7 @@ export default function Login (): JSX.Element {
             name="password"
             placeholder="Insira sua senha"
           />
-          <button type="submit">Enviar</button>
+          <button data-testid='submit-button' disabled type="submit">Enviar</button>
           <span className={styles.link}>Criar Conta</span>
           <FormStatus />
         </form>
