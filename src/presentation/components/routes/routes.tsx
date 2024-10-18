@@ -7,6 +7,7 @@ export default function Router (): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />}/>
+        <Route path='/hello' element={<h1>Hello, World!</h1>}/>
         <Route path='*' element={<Navigate to={'/login'}/>} />
       </Routes>
     </BrowserRouter>
